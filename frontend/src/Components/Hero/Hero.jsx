@@ -4,8 +4,8 @@ import hand from '../Assets/hand_icon.png';
 import arrow from '../Assets/arrow.png';
 import heroImg from '../Assets/hero_image.png';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/js/bootstrap.bundle.min';
 const   Hero = () => {
   return (
     <div  className='hero'>

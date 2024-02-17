@@ -6,16 +6,24 @@ import Product from "./Pages/Product";
 import Cart from "./Pages/Cart";
 import LoginSignup from "./Pages/LoginSignup";
 import Footer from "./Components/Footer/Footer";
+import men from './Components/Assets/banner_mens.png'
+import women from './Components/Assets/banner_women.png'
+import kid from './Components/Assets/banner_kids.png'
+import {BrowserRouter} from 'react-router-dom';
+
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 function App() {
   return (
     <div >
+        <BrowserRouter>
       <Navbar />
     <Routes>
       <Route path="/" element={<Shop />}/>
-      <Route path="/mens" element={<ShopCatedory category = "mens"/>}/>
-      <Route path="/womens" element={<ShopCatedory category = "womens"/>}/>
-      <Route path="/kids" element={<ShopCatedory category = "kids"/>}/>
+      <Route path="/mens" element={<ShopCatedory banner={men} category= "men"/>}/>
+      <Route path="/womens" element={<ShopCatedory banner={women} category= "women"/>}/>
+      <Route path="/kids" element={<ShopCatedory banner={kid} category= "kid"/>}/>
       <Route path="/product" element={<Product />}>
         <Route path=":productId" element={<Product />}/>
       </Route>
@@ -25,6 +33,7 @@ function App() {
 
     </Routes>
     <Footer />
+    </BrowserRouter>
     </div>
   );
 }

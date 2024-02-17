@@ -4,8 +4,7 @@ import './Navbar.css';
 // import cart from '../../../src/cart.png'
 import logo from '../Assets/logo.png';
 import cart from '../Assets/cart_icon.png';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 
 
 const Navbar = () => {
