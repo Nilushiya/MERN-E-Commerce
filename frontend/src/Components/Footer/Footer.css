@@ -1,0 +1,15 @@
+.footer{
+    width: 90%;
+    height: auto;
+    background-color: #C9D6DF;
+}
+.footerLinks li{
+    list-style-type: none;
+    padding: 15px;
+    margin: 10px 10px 0 0;
+    color: #F0F5F9;
+    background-color: #1E2022;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+}

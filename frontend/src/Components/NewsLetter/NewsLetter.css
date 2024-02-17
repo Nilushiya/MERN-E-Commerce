@@ -1,0 +1,10 @@
+.NewsLetter{
+    background-image: linear-gradient(#52616B, #C9D6DF);
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 20px;
+}
