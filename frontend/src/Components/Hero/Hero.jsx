@@ -27,7 +27,7 @@ const   Hero = () => {
                     <p>for everyone</p>
                 </div>
                 <div className=" heroLatestbtn d-flex justify-content-center align-items-center p-1" style={{ backgroundColor: "#1E2022"}}>
-                    <div className='m-2' style={{ color: "#C9D6DF"}}>Latest Collection</div>
+                    <div className='p-3' style={{ color: "#C9D6DF"}}>Latest Collection</div>
                     <img src={arrow} alt="" />
                 </div>
             </div>

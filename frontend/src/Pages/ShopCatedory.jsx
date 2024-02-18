@@ -8,7 +8,7 @@ const ShopCatedory = (props) => {
     const {allProducts} = useContext(ShopContext);
   return (
     <div className='shopCatedory'>
-        <img src={props.banner} alt="" className='img-fluid rounded' width= "auto" height=""/>
+        <img src={props.banner} alt="" className='img-fluid rounded' width= "100%" height="100%"/>
         <div className="indexSort">
             <p>
                 <span>Showing 1-12</span> out of 36 products

@@ -1,6 +1,7 @@
 .footer{
-    width: 90%;
-    height: auto;
+    /* width: 80%; */
+   padding: 20px;
+    /* height: auto; */
     background-color: #C9D6DF;
 }
 .footerLinks li{

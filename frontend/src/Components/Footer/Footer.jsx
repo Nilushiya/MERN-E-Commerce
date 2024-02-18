@@ -14,7 +14,7 @@ const Footer = () => {
             <img src={footerLogo} alt="" />
             <p>SHOPPER</p>
         </div>
-        <ul className="footerLinks d-flex flex-row justify-content-center align-items-center p-1">
+        <ul className="footerLinks d-flex flex-row justify-content-center align-items-center flex-wrap p-1">
             <li >Company</li>
             <li >Products</li>
             <li >Offices</li>
