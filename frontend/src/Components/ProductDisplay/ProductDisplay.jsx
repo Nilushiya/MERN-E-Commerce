@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './ProductDisplay.css'
+import { ShopContext } from '../../Context/ShopContext'
+import { Link } from 'react-router-dom'
 const ProductDisplay = (props) => {
   const {product} = props
+  const {addToCart} = useContext(ShopContext);
   return (
     <div className='row ProductDisplay m-5'>
         <div className="col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center">
@@ -27,7 +30,7 @@ const ProductDisplay = (props) => {
               <div>XXL</div>
             </div>
           </div>
-          <button>Add To Cart</button>
+          <button onClick={()=>{addToCart(product.id)}}>Add To Cart</button>
         </div>
     </div>
   )

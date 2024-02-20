@@ -7,7 +7,7 @@ const DescriptionBox = () => {
             <div className="descriptionBox-nav-box text-center justify-content-center align-items-cente">Description</div>
             <div className="descriptionBox-nav-box text-center justify-content-center align-items-cente">Reviews(122) </div>
         </div>
-        <div className="descriptionBox-description m-5 p-2">
+        <div className="descriptionBox-description m-5 ">
             Lorem ipsum, dolor sit amet consectetur adipisicing 
             elit. Quia odit iste laudantium doloribus deleniti 
             itaque error corrupti molestias pariatur quam reiciendis
