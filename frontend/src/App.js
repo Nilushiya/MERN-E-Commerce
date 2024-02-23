@@ -18,7 +18,7 @@ function App() {
   return (
     <div >
         <BrowserRouter>
-      <Navbar />
+    
     <Routes>
       <Route path="/" element={<Shop />}/>
       <Route path="/mens" element={<ShopCatedory banner={men} category= "men"/>}/>
