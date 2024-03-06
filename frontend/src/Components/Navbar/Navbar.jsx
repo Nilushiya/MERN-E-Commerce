@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 // import cart from '../../../src/cart.png'
 import logo from '../Assets/logo.png';
 import cart from '../Assets/cart_icon.png';
+import { ShopContext } from '../../Context/ShopContext';
 
 
 
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
-
+  const {getTotalCartItems} = useContext(ShopContext);
     const hrStyle = {
       // border: 'none',
       // width: '80%',
@@ -67,7 +68,7 @@ const Navbar = () => {
               <div className="left">
                 <Link to='/login'><button type="button" >Login</button></Link>
                 <Link to='/cart'><img src={cart} alt="" /></Link>
-                <div id='navCount'>0</div>
+                <div id='navCount'>{getTotalCartItems()}</div>
               </div>
             </ul>
           </div>
