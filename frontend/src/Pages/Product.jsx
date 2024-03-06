@@ -11,6 +11,7 @@ const Product = () => {
     const {productId} = useParams();
     const product = allProducts.find((e) =>
         e.id === Number(productId))
+        console.log(product)
   return (
     <div className='Product'>
         <Breadcrum  product = {product} />

@@ -1,0 +1,34 @@
+.addCardItems{
+    margin: 20px;
+    padding: 20px;
+}
+.addCardItems:nth-child(odd){
+    background-color: bisque;
+}
+.addCartDetails img{
+    color: red;
+}
+.addCartDetails span{
+    color: chocolate;
+}
+.cartItemTotal{
+    margin-top: 35px;
+    font-size: 20px;
+    text-align: center;
+}
+.cartItemTotal h2{
+    font-size: 35px;
+    font-weight: 800;
+}
+.cartitems-total-item .para1{
+    padding-left: 5%;
+}
+.cartitems-total-item .para2{
+    padding-left: 60%;
+}
+.cartitems-total-item .ptotal{
+    padding-left: 64.5%;
+}
+.cartitems-promocode{
+    font-size: 25px;
+}
