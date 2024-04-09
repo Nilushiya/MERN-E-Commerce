@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
+const db = require('../config/db');
+const bcrypt = require('bcrypt');
+const { Schema } = mongoose;
 
-const userSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
         id:{
             type: Number,
             required:true,
@@ -36,4 +39,5 @@ const userSchema = new mongoose.Schema({
         },
     })
 
-module.exports = mongoose.model('Users', userSchema)
+const ProductModel = mongoose.model('Product', productSchema);
+module.exports = ProductModel;

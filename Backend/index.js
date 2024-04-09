@@ -1,21 +1,10 @@
 const port = 4000;
-const express = require('express');
-const app = express();
-const jwt = require('jsonwebtoken');
-const multer = require("multer");
-const path = require('path');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const connectDB = require('./config/db');
-app.use(express.json());
-app.use(cors());
+const app = require('./app');
+const db = require('./config/db');
+const userModel = require('./model/user');
 
 
-connectDB();
-
-// app.get("/",(req,res)=>{
-//     res.send("Express App is Running")
-// })
+db();
 
 // const storage = multer.diskStorage({
 //     destination: './upload/images',
@@ -54,14 +43,7 @@ connectDB();
 // })
 
 
-// app.listen(port,(error)=>{
-//     if(!error){
-//         console.log("Server Running on Port : "+port);
-//     }
-//     else{
-//         console.log("Error : "+error)
-//     }
-// })
+
 
 
 
