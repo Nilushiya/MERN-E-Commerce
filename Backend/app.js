@@ -10,5 +10,7 @@ const cors = require('cors');
 const app = (express());
 app.use(body_parser.json());
 app.use('/user',userRouter);
+app.use('/images', express.static('upload/images'));
 app.use('/product',productRouter);
+
 module.exports = app;
