@@ -1,4 +1,4 @@
-const product = require('../model/product')
+const ProductModel = require('../model/product')
 const multer = require('multer');
 const path = require('path');
 
@@ -10,13 +10,16 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-exports.delete = async (productId) => {
-    try {
-        return await product.findOneAndRemove({ id: productId });
-    } catch (err) {
-        throw new Error('Failed to remove product');
-    }
-};
+// exports.deleteProduct = async (productId) => {
+//     try {
+//         console.log("jjj");
+//         return await ProductModel.findOneAndRemove({ _id: productId });
+//     } catch (err) {
+//         console.log("bbbb");
+
+//         throw new Error('Failed to remove product');
+//     }
+// };
 
 
 module.exports = upload;

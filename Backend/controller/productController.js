@@ -49,15 +49,21 @@ exports.addProduct = async (req, res) => {
 
 exports.deleteProduct = async (req, res) => {
     try {
-        const productId = req.params.id;
+        const productId = req.body._id;
+        console.log(req.body._id);
+        
+     
+        const product = await ProductModel.findOne({ _id: productId }).exec();
 
-        const product = await ProductModel.findOne({ id: productId });
+        console.log(product); 
+        
         if (!product) {
             return res.status(404).json({ message: 'Product not found' });
         }
-        console.error("successRes");
-        const successRes = await ProductService.delete(productId);
-        console.error(successRes);
+
+        // Delete the product
+        await product.remove();
+
         return res.json({ status: true, success: "Product Delete Successfully" });
     } catch (err) {
         console.error(err);
@@ -65,15 +71,21 @@ exports.deleteProduct = async (req, res) => {
     }
 };
 
+
 // exports.deleteProduct = async (req, res) => {
 //     const { userid } = req.body;
-//     console.log(req.body._id);
+//     console.log(req.body.id);
 //     try{
-//         ProductModel.deleteOne({ _id : userid} , function(err , res){
-//             console.log(err);
-//         })
-//     }
-//     catch(error){
-//         consolee.log(error);
+//         const result = await ProductModel.deleteOne({ id: userid });
+
+//         if (!result) {
+//           return res.status(404).json({ message: 'Product not found' });
+//       }
+        
+//         console.log(result);
+//         return res.json({ message: 'Product deleted successfully' });
+//     } catch (error) {
+//         console.error(error);
+//         return res.status(500).json({ error: 'Internal Server Error' });
 //     }
 // };
