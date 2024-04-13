@@ -1,6 +1,6 @@
 const ProductService = require('../services/productServices');
 const mongoose = require('mongoose');
-
+// const { Types: { ObjectId } } = require('mongoose');
 // exports.addProduct = async(req,res,next) => {
 //     try{
 //         const {email,password} = req.body;
@@ -46,14 +46,14 @@ exports.addProduct = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
-
+const { Types: { ObjectId } } = require('mongoose');
 exports.deleteProduct = async (req, res) => {
     try {
         const productId = req.body._id;
         console.log(req.body._id);
         
      
-        const product = await ProductModel.findOne({ _id: productId }).exec();
+        const product = await ProductModel.findById(new ObjectId(productId));
 
         console.log(product); 
         
@@ -61,9 +61,8 @@ exports.deleteProduct = async (req, res) => {
             return res.status(404).json({ message: 'Product not found' });
         }
 
-        // Delete the product
-        await product.remove();
-
+        const result = await product.deleteOne();
+        console.log(result); 
         return res.json({ status: true, success: "Product Delete Successfully" });
     } catch (err) {
         console.error(err);
@@ -72,20 +71,3 @@ exports.deleteProduct = async (req, res) => {
 };
 
 
-// exports.deleteProduct = async (req, res) => {
-//     const { userid } = req.body;
-//     console.log(req.body.id);
-//     try{
-//         const result = await ProductModel.deleteOne({ id: userid });
-
-//         if (!result) {
-//           return res.status(404).json({ message: 'Product not found' });
-//       }
-        
-//         console.log(result);
-//         return res.json({ message: 'Product deleted successfully' });
-//     } catch (error) {
-//         console.error(error);
-//         return res.status(500).json({ error: 'Internal Server Error' });
-//     }
-// };
