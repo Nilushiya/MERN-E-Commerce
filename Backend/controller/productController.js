@@ -1,4 +1,5 @@
-// const ProductService = require('../services/productServices');
+const ProductService = require('../services/productServices');
+const mongoose = require('mongoose');
 
 // exports.addProduct = async(req,res,next) => {
 //     try{
@@ -43,5 +44,23 @@ exports.addProduct = async (req, res) => {
         res.json(savedProduct);
     } catch (error) {
         res.status(500).json({ error: error.message });
+    }
+};
+
+exports.deleteProduct = async (req, res) => {
+    try {
+        const productId = req.params.id;
+
+        const product = await ProductModel.findOne({ id: productId });
+        if (!product) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+        console.error("successRes");
+        const successRes = await ProductService.delete(productId);
+        console.error(successRes);
+        res.json({ status: true, success: "Product Delete Successfully" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal Server Error' });
     }
 };

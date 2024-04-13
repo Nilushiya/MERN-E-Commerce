@@ -1,7 +1,6 @@
 const express = require('express');
 const body_parser = require('body-parser');
 const {userRouter, productRouter} = require('./routers/indexRouter');
-const jwt = require('jsonwebtoken');
 const multer = require("multer");
 const path = require('path');
 const cors = require('cors');
