@@ -58,9 +58,22 @@ exports.deleteProduct = async (req, res) => {
         console.error("successRes");
         const successRes = await ProductService.delete(productId);
         console.error(successRes);
-        res.json({ status: true, success: "Product Delete Successfully" });
+        return res.json({ status: true, success: "Product Delete Successfully" });
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
+
+// exports.deleteProduct = async (req, res) => {
+//     const { userid } = req.body;
+//     console.log(req.body._id);
+//     try{
+//         ProductModel.deleteOne({ _id : userid} , function(err , res){
+//             console.log(err);
+//         })
+//     }
+//     catch(error){
+//         consolee.log(error);
+//     }
+// };

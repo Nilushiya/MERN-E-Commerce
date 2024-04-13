@@ -30,11 +30,12 @@ exports.register = async(req,res,next) => {
 exports.login = async(req,res,next) => {
     try{
         const {email,password} = req.body;
+        console.log(req.body.email);
         const user =await userModel.findOne({email});
             if(!user){
                 return res.json({error:"User Not Found"});
             }
-            if(await bcrypt.compare(password,userModel.password)){
+            if(await bcrypt.compare(password,user.password)){
                 const token = jwt.sign({email:user.email}, JWT_SECRET);
 
                 if(res.status(201)){
