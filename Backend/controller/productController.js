@@ -1,31 +1,15 @@
 const ProductService = require('../services/productServices');
 const mongoose = require('mongoose');
-// const { Types: { ObjectId } } = require('mongoose');
-// exports.addProduct = async(req,res,next) => {
-//     try{
-//         const {email,password} = req.body;
-//         const successRes = await ProductService.addProductAdmin(name,image,category,new_price,old_price,available);
-//         res.json({status:true,success:"Admin product add Successfully"})
-//     }
-//     catch(err){
-
-//     }
-// }
-
-
+const { Types: { ObjectId } } = require('mongoose');
 const ProductModel = require('../model/product');
 
 exports.addProduct = async (req, res) => {
     try {
         const { name,imageUrl,category,new_price,old_price,available } = req.body;
-        
-        // Check if the request contains a file upload
         let image;
         if (req.file) {
-            // If a file was uploaded, store the file URL
             image = `/images/${req.file.filename}`;
         } else if (imageUrl) {
-            // If an image URL was provided, use it directly
             image = imageUrl;
         } else {
             return res.status(400).json({ error: 'Please provide an image file or URL' });
@@ -46,7 +30,18 @@ exports.addProduct = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
-const { Types: { ObjectId } } = require('mongoose');
+
+exports.getAllProducts = async(req,res) => {
+    try {
+        let products = await ProductModel.find({});
+        console.log("All products fetched");
+        res.json({ products });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+}
+
 exports.deleteProduct = async (req, res) => {
     try {
         const productId = req.body._id;
@@ -69,5 +64,7 @@ exports.deleteProduct = async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
+
+
 
 

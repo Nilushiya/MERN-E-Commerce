@@ -10,16 +10,4 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-// exports.deleteProduct = async (productId) => {
-//     try {
-//         console.log("jjj");
-//         return await ProductModel.findOneAndRemove({ _id: productId });
-//     } catch (err) {
-//         console.log("bbbb");
-
-//         throw new Error('Failed to remove product');
-//     }
-// };
-
-
 module.exports = upload;
