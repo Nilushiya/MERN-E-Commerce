@@ -1,0 +1,30 @@
+.Sidebar{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    padding-top: 30px;
+    gap: 20px;
+    width: 100%;
+    max-width: 200px;
+    height: 100vh;
+    /* background-color: aqua; */
+}
+.Sidebar .SidebarItam{
+    padding: 20px;
+    background-color: rgb(241, 237, 237);
+    color: black;
+}
+
+@media(max-width:800px){
+    .Sidebar{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-top: 30px 0px;
+        gap: 20px;
+        width: 100%;
+        max-width: none;
+        height: auto;
+    } 
+}
