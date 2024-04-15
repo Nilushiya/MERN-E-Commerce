@@ -1,19 +1,23 @@
-const ProductService = require('../services/productServices');
 const mongoose = require('mongoose');
 const { Types: { ObjectId } } = require('mongoose');
 const ProductModel = require('../model/product');
 
+
+exports.uploadProductImage = (req, res) => {
+    try {
+        res.json({
+            success: 1,
+            image_url: `http://localhost:4000/images/${req.file.filename}`
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
 exports.addProduct = async (req, res) => {
     try {
         const { name,imageUrl,category,new_price,old_price,available } = req.body;
-        let image;
-        if (req.file) {
-            image = `/images/${req.file.filename}`;
-        } else if (imageUrl) {
-            image = imageUrl;
-        } else {
-            return res.status(400).json({ error: 'Please provide an image file or URL' });
-        }
 
         const newProduct = new ProductModel({
             name,
@@ -25,7 +29,8 @@ exports.addProduct = async (req, res) => {
         });
 
         const savedProduct = await newProduct.save();
-        res.json(savedProduct);
+        res.json({success:true,
+            savedProduct});
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

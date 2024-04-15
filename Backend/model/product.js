@@ -2,10 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const productSchema = new Schema({
-    id: { 
-        type:Number,
-        // required: true,
-    },
+
     name: {
         type: String,
         required: true,
@@ -38,12 +35,12 @@ const productSchema = new Schema({
 
 productSchema.pre('save', async function(next) {
     if (!this.isNew) {
-        return next(); // If document is not new, don't generate an ID
+        return next(); 
     }
 
     try {
-        const count = await this.constructor.countDocuments(); // Count existing documents
-        this.id = count + 1; // Generate ID based on the count
+        const count = await this.constructor.countDocuments();
+        this.id = count + 1; 
         next();
     } catch (error) {
         next(error);
