@@ -28,6 +28,12 @@ const Navbar = () => {
     fontsize:'20px',
     fontweight: '500'
     }
+
+    const logout = () => {
+      console.log("logout");
+      localStorage.removeItem('auth-token');
+      window.location.replace('/')
+    }
   return (
     // <div className='navbar'>
       <nav className="navbar navbar-expand-lg ">
@@ -55,18 +61,10 @@ const Navbar = () => {
               <li className="nav-item" onClick={() => setMenu("kids")}>
                 <Link className="nav-link" to="/kids">Kids{menu === "kids" ? <hr style={hrStyle}/> : <></>}</Link>
               </li>
-              {/* <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  More
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><Link className="dropdown-item" to="/">Action</Link></li>
-                  <li><Link className="dropdown-item" to="/">Another action</Link></li>
-                  <li><Link className="dropdown-item" to="/">Something else here</Link></li>
-                </ul>
-              </li> */}
               <div className="left">
-                <Link to='/login'><button type="button" >Login</button></Link>
+                {localStorage.getItem('auth-token')
+                ?<button onClick={logout}>Logout</button>
+                :<Link to='/login'><button type="button">Login</button></Link>}
                 <Link to='/cart'><img src={cart} alt="" /></Link>
                 <div id='navCount'>{getTotalCartItems()}</div>
               </div>

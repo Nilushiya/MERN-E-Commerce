@@ -26,3 +26,7 @@
     outline: none;
     font-size: 18px;
 }
+.text-right span{
+    color: red;
+    cursor: pointer;
+}
