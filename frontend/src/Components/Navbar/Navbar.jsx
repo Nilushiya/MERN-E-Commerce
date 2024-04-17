@@ -66,7 +66,7 @@ const Navbar = () => {
                 </ul>
               </li> */}
               <div className="left">
-                <Link to='/sign-in'><button type="button" >Login</button></Link>
+                <Link to='/login'><button type="button" >Login</button></Link>
                 <Link to='/cart'><img src={cart} alt="" /></Link>
                 <div id='navCount'>{getTotalCartItems()}</div>
               </div>

@@ -3,6 +3,10 @@ const db = require('../config/db');
 
 const { Schema } = mongoose;
 const userSchema = new mongoose.Schema({
+       name:{
+        type:String,
+        required: true,
+       },
        email:{
         type:String,
         lowercase:true,
@@ -12,6 +16,19 @@ const userSchema = new mongoose.Schema({
        password:{
         type:String,
         require:true
+       },
+       cartData:{
+        type:Object,
+        require:true
+       },
+       Date:{
+        type:Date,
+        default:Date.now
+       },
+       userStatus:{
+        type:String,
+        enum: ['active', 'deleted'],
+        default: 'active'
        }
     })
     // userSchema.pre('save', async function(next) {

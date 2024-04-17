@@ -5,20 +5,35 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const userModel = require("../model/user");
-const UserService = require('../services/userServices');
+// const UserService = require('../services/userServices');
 
-const JWT_SECRET = "sforgmthmgbvd{bbb()cbfghfaskeavfhityoweuervngg2438cmu593?{}dfgfb[]dfgfb58vi493v";
+// const JWT_SECRET = "sforgmthmgbvd{bbb()cbfghfaskeavfhityoweuervngg2438cmu593?{}dfgfb[]dfgfb58vi493v";
 
 exports.register = async(req,res,next) => {
     try{
-        const {email,password} = req.body;
+        const {name,email,password} = req.body;
         const olderUser =await userModel.findOne({email});
             if(olderUser){
-                return res.json({error:"User Exists"});
+                return res.json({success:false,error:"User Exists"});
             }
+            let cart = {};
+            for (let i = 0; i < 300 ; i++){
+                cart[i]=0;
+            }
+         
         const encryptedPassword = await bcrypt.hash(password,10); 
-        const successRes = await UserService.registerUser(email,encryptedPassword);
-        return res.json({status:true,success:"User Registered Successfully"})
+
+        // const successRes = await UserService.registerUser(name,email,encryptedPassword);
+        const createrUser = new userModel({name,email,password:encryptedPassword,cartData:cart});
+        await createrUser.save();
+
+        const data ={
+            createrUser:{
+                id:createrUser._id
+            }
+        }
+        const token = jwt.sign(data,'secret_ecom')
+        return res.json({success:true,token})
     }
     catch(err){
         console.error(err);
@@ -36,14 +51,13 @@ exports.login = async(req,res,next) => {
                 return res.json({error:"User Not Found"});
             }
             if(await bcrypt.compare(password,user.password)){
-                const token = jwt.sign({email:user.email}, JWT_SECRET);
-
-                if(res.status(201)){
-                  return res.json({status: "ok" , data: token});
+                const data ={
+                    user:{
+                        id:user._id
+                    }
                 }
-                else{
-                    return res.json({error:"error"});
-                }
+                const token = jwt.sign(data,'secret_ecom')
+                return res.json({success:true,token})
             }
         // const successRes = await UserService.registerUser(email,encryptedPassword);
         return res.json({status:"error",error:"Invalid Password"});

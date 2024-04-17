@@ -42,7 +42,7 @@ const ListProduct = () => {
           const imageUrl = `http://localhost:4000/images/${file.name}`;
           setImageFile(imageUrl);
           const updatedProduct = [...allProducts];
-          updatedProduct[index][property] = imageUrl;
+          updatedProduct[index][property] = file;
           setAllProducts(updatedProduct);
         };
         reader.readAsDataURL(file);

@@ -1,0 +1,28 @@
+.LoginSignup{
+    width: 100%;
+    height: 80vh;
+    padding-top: 100px;
+}
+.loginSignupContainer{
+    width: 580px;
+    height: 600px;
+    margin: auto;
+    padding: 40px 20px;
+}
+.loginSignupContainer h1{
+    margin: 20px 0px;
+}
+.inputFields{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    gap: 25px;
+}
+.inputFields input{
+    height: 70px;
+    width: 100%;
+    padding-left: 20px;
+    border: 1px  solid #c9c9c9;
+    outline: none;
+    font-size: 18px;
+}
