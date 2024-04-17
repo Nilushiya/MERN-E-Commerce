@@ -40,13 +40,39 @@ exports.getAllProducts = async(req,res) => {
     try {
         let products = await ProductModel.find({});
         console.log("All products fetched");
-        res.json({ products });
+        res.json(products);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal Server Error' });
     }
 }
-
+exports.updateProducts = async(req,res) => {
+    try {
+        const productId = req.params.productId;
+        const updateData = req.body;
+       
+        const updatedProduct = await ProductModel.findByIdAndUpdate(productId, updateData, { new: true });
+        console.log(updatedProduct);
+        res.json(updatedProduct);
+    } catch (error) {
+        console.error('Error updating product:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+}
+exports.updateProductImg = async(req,res) => {
+    try {
+        const productId = req.params.productId;
+        console.log(productId);
+        const updateImg = req.body;
+        console.log(req.body);
+        const updatedProduct = await ProductModel.findByIdAndUpdate(productId, updateImg, { new: true });
+        console.log(updatedProduct);
+        res.json(updatedProduct);
+    } catch (error) {
+        console.error('Error updating product:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+}
 exports.deleteProduct = async (req, res) => {
     try {
         const productId = req.body._id;

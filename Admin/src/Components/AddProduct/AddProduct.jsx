@@ -25,6 +25,7 @@ const AddProduct = () => {
 
         let formData = new FormData();
         formData.append('product', imageUrl);
+        console.log(formData);
         try {
             const response = await fetch('http://localhost:4000/product/upload', {
                 method: 'POST',
@@ -42,7 +43,6 @@ const AddProduct = () => {
         if(responseData.success){
             product.imageUrl = responseData.image_url;
             console.log(product);
-            // try {
                 console.log(JSON.stringify(product));
                  await fetch('http://localhost:4000/product/addProduct', {
                     method: 'POST',
@@ -59,9 +59,6 @@ const AddProduct = () => {
                         alert("Failed");
                     }
                 });
-            // } catch (error) {
-            //     console.error('Error uploading product:', error);
-            // }
         } 
     }
 
