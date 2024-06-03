@@ -2,6 +2,7 @@ import React from 'react'
 import './Item.css'
 import { Link } from 'react-router-dom'
 const Item = (props) => {
+  // console.log(props);
   return (
     <div className='item text-center'>
         <Link to={`/product/${props.id}`}>        <img src={props.image} onClick={window.scrollTo(0,0)} alt="" className='img-fluid rounded m-2'  width= "60%" height= "auto"/></Link>

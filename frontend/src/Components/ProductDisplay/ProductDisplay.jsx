@@ -8,7 +8,7 @@ const ProductDisplay = (props) => {
   return (
     <div className='row ProductDisplay m-5'>
         <div className="col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center">
-          <img src={product.image} alt="" />
+          <img src={product.imageUrl} alt="" />
         </div>
         <div className="col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center p-2">
           <h1>{product.name}</h1>

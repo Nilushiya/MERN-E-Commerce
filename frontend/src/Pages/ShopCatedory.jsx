@@ -22,7 +22,7 @@ const ShopCatedory = (props) => {
                 if(props.category === item.category){
                     return (
                         <div key={i} className="col-lg-3 col-md-6 col-12">
-                          <Item id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price} />
+                          <Item id={item._id} name={item.name} image={item.imageUrl} new_price={item.new_price} old_price={item.old_price} />
                         </div>) }              
                          else{
                     return null;

@@ -83,3 +83,36 @@ exports.userData = async(req,res) => {
     } 
     catch(err){}
 }
+
+const fetctUser = async(req,res) =>{
+    const token = req.header('auth-token');
+    if(!token){
+        res.status(401).json({error:"Please authenticate using valite token"})
+    }
+    else{
+        try{
+            const data = jwt.verify(token,'secret_ecom');
+            req.user = data.user;
+            next();
+        }
+        catch(error){
+            res.status(401).json({error:"Please authenticate valite token"})
+        }
+    }
+}
+// exports.addtocart = async(req,res) => {
+//     console.log("Added ",req.body.itemId);
+//     let userData = await userModel.findOne({_id:req.user.id});
+//     userData.cartData[req.body.itemId] += 1;
+//     await userModel.findByIdAndUpdate({_id:req.user.id},{cartData:userData.cartData});
+//     res.json("Added");
+// }
+
+// exports.removetocart = async(req,res) => {
+//     console.log("removed ",req.body.itemId);
+//     let userData = await userModel.findOne({_id:req.user.id});
+//     if(userData.cartData[req.body.itemId] > 0)
+//     userData.cartData[req.body.itemId] -= 1;
+//     await userModel.findByIdAndUpdate({_id:req.user.id},{cartData:userData.cartData});
+//     res.json("Removed");
+// }

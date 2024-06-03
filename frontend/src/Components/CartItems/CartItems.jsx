@@ -20,18 +20,18 @@ const CartItems = () => {
     //   <hr />
       <div className='addCard'>
         {allProducts.map((e) => {
-          if (cartItems[e.id] > 0) {
+          if (cartItems[e._id] > 0) {
             return (
               <div className='row addCardItems'>
                 <div className="col-lg-6 col-md-6 col-12 d-flex flex-row justify-content-center align-items-center addCardImg" key={e.id} >
-                  <img src={e.image} alt="" className='img-fluid rounded'width= "250px" height="300px"/>
+                  <img src={e.imageUrl} alt="" className='img-fluid rounded'width= "250px" height="300px"/>
                 </div>
                 <div className='col-lg-6 col-md-6 col-12 d-flex flex-column justify-content-center align-items-center addCartDetails'>
                   <p >{e.name}</p>
                   <p>ONE : <span>${e.new_price}</span></p>
-                  <p>QUANTITY : <span>{cartItems[e.id]}</span></p>
-                  <p>TOTAL : <span>${e.new_price * cartItems[e.id]}</span></p>
-                  <img src={remove} onClick={() => removeFromCart(e.id)}  alt="" />
+                  <p>QUANTITY : <span>{cartItems[e._id]}</span></p>
+                  <p>TOTAL : <span>${e.new_price * cartItems[e._id]}</span></p>
+                  <img src={remove} onClick={() => removeFromCart(e._id)}  alt="" />
                 </div>
               </div> 
             );

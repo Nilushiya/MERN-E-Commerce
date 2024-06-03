@@ -1,19 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './RelatedProduct.css'
 import Item from '../Item/Item'
-import dataProduct from '../Assets/all_product'
+// import dataProduct from '../Assets/all_product'
 const RelatedProduct = (props) => {
     const {product} = props
+    console.log("ppp",product)
+    const [AllProduct , setAllProduct] = useState([]);
+    useEffect(()=>{
+        fetch('http://localhost:4000/product/allProduct')
+        .then((res)=>res.json()).then((data)=>setAllProduct(data))
+    },[])
+    console.log(AllProduct);
   return (
     <div className='relatedProduct'>
         <h1>Related Product</h1>
         <hr />
         <div className="row relatedProduct-item">
-        {dataProduct.map((item,i) => {
-                if(product.category === item.category && product.id != item.id){
+        {AllProduct.map((item) => {
+                if(product.category === item.category && product._id != item._id){
                 return (
-                    <div key={i} className="col-lg-3 col-md-6 col-12">
-                        <Item id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price} />
+                    <div key={item._id} className="col-lg-3 col-md-6 col-12">
+                        <Item id={item._id} name={item.name} image={item.imageUrl} new_price={item.new_price} old_price={item.old_price} />
                     </div>)
                 }
             })}

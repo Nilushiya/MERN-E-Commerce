@@ -73,6 +73,7 @@ exports.updateProductImg = async(req,res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 }
+
 exports.deleteProduct = async (req, res) => {
     try {
         const productId = req.body._id;
@@ -95,6 +96,20 @@ exports.deleteProduct = async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
+
+exports.newCollections = async(req,res) => {
+    let products = await ProductModel.find({});
+    let newCollection = products.slice(1).slice(-8);
+    console.log("All products fetched");
+    res.json(newCollection);
+}
+
+exports.popularWomens = async(req,res) =>{
+    let products = await ProductModel.find({category:"women"});
+    let popularInWomen = products.slice(0,4);
+    console.log("Popular in Women fetched");
+    res.json(popularInWomen);
+}
 
 
 
