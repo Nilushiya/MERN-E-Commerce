@@ -4,24 +4,29 @@ import { json } from 'react-router-dom';
 
 export const ShopContext = createContext(null);
 
-const getDefaultCart = () => {
+const getDefaultCart = (allProducts) => {
+    console.log(allProducts);
     let cart = {};
-    for(let index = 1 ; index < 300+1; index++){
-        cart[index] = 0;
-    }
+    allProducts.forEach(item => {
+        cart[item._id] = 0;
+    });
     return cart;
 }
 
 const ShopContextProvider = (props) => {
     const [allProducts,setAllProducts] = useState([]);
-    const [cartItems , setCartItems] = useState(getDefaultCart());
+    const [cartItems , setCartItems] = useState();
+    console.log(cartItems);
+    console.log(allProducts);
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const res = await fetch('http://localhost:4000/product/allProduct');
                 const data = await res.json();
                 setAllProducts(data);
-                console.log("hhh"+allProducts)
+                // const productIds = data.map(product => product.id);
+                // console.log("hhh  :"+productIds)
+                setCartItems(getDefaultCart(data));   
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -82,7 +87,7 @@ const ShopContextProvider = (props) => {
     const getTotalCartItems = () => {
         let totalItem = 0; 
         for (const item in cartItems) {
-            console.log("Hi");
+            // console.log("Hi");
             if (cartItems[item] > 0) {
                 totalItem += cartItems[item];
             }

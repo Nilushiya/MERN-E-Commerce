@@ -30,7 +30,7 @@ const ProductDisplay = (props) => {
               <div>XXL</div>
             </div>
           </div>
-          <button onClick={()=>{addToCart(product.id)}}>Add To Cart</button>
+          <button onClick={()=>{addToCart(product._id)}}>Add To Cart</button>
         </div>
     </div>
   )

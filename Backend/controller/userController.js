@@ -100,13 +100,13 @@ const fetctUser = async(req,res) =>{
         }
     }
 }
-// exports.addtocart = async(req,res) => {
-//     console.log("Added ",req.body.itemId);
-//     let userData = await userModel.findOne({_id:req.user.id});
-//     userData.cartData[req.body.itemId] += 1;
-//     await userModel.findByIdAndUpdate({_id:req.user.id},{cartData:userData.cartData});
-//     res.json("Added");
-// }
+exports.addtocart = async(req,res) => {
+    console.log("Added ",req.body.itemId);
+    let userData = await userModel.findOne({_id:req.user.id});
+    userData.cartData[req.body.itemId] += 1;
+    await userModel.findByIdAndUpdate({_id:req.user.id},{cartData:userData.cartData});
+    res.json("Added");
+}
 
 // exports.removetocart = async(req,res) => {
 //     console.log("removed ",req.body.itemId);
